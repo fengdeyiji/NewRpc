@@ -1,0 +1,16 @@
+[
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DBOOST_TEST_MAIN", "-DDEBUG", "-std=c++23", "-O0", "-g3", "--coverage", "-o", "build/.objs/test/linux/x86_64/debug/tests/test_serialization.cpp.o", "tests/test_serialization.cpp"],
+  "file": "tests/test_serialization.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DBOOST_TEST_MAIN", "-DDEBUG", "-std=c++23", "-O0", "-g3", "--coverage", "-o", "build/.objs/test/linux/x86_64/debug/tests/test_stringification.cpp.o", "tests/test_stringification.cpp"],
+  "file": "tests/test_stringification.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
+  "file": "src/main.cpp"
+}]
