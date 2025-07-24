@@ -6,10 +6,10 @@
 #include <type_traits>
 #include <concepts>
 #include <ranges>
-#include <boost/hana.hpp>
 #include <format>
+#include "static_reflection.hpp"
 
-namespace new_rpc {
+namespace G {
 
 template <typename T>
 concept ToStringAble = requires {
@@ -42,10 +42,10 @@ template <typename Value>
 void kv_to_string(const char *key, const Value &value, char *buffer, const int64_t buffer_len, int64_t &pos);
 
 template <typename Value>
-void value_to_string(const Value &value, char *buffer, const int64_t buffer_len, int64_t &pos, bool with_key = false) {
-  #define FORMAT_TO(fmt...) \
+void value_to_string(const Value &value, char *buffer, const int64_t buffer_len, int64_t &pos, bool with_key) {
+  #define FORMAT_TO(fmt, ...) \
     if (pos < buffer_len) [[likely]] { \
-      auto result = std::format_to_n(buffer + pos, buffer_len - pos, fmt); \
+      auto result = std::format_to_n(buffer + pos, buffer_len - pos, fmt __VA_OPT__(,) __VA_ARGS__); \
       if (pos + result.size <= buffer_len) [[likely]] { \
         pos += result.size; \
       } else { \
@@ -122,15 +122,13 @@ void value_to_string(const Value &value, char *buffer, const int64_t buffer_len,
     if (with_key) {
       FORMAT_TO("}}");
     }
-  } else if constexpr (hana_reflectable<Value>) { // 其他类型: 要求该类型可被boost::hana静态反射
+  } else if constexpr (Reflectable<Value>) { // 其他类型: 要求该类型可被boost::hana静态反射
     if (with_key) {
       FORMAT_TO("{{");
     }
     bool need_back = false;
-    boost::hana::for_each(value, [buffer, buffer_len, &pos, &need_back] (const auto& pair) {
-      const auto& key = boost::hana::to<char const*>(boost::hana::first(pair));
-      const auto& value = boost::hana::second(pair);
-      kv_to_string(key, value, buffer, buffer_len, pos);
+    reflect_for_each(value, [buffer, buffer_len, &pos, &need_back](const char *name, const auto &value) {
+      kv_to_string(name, value, buffer, buffer_len, pos);
       FORMAT_TO(", ");
       need_back = true;
     });

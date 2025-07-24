@@ -1,24 +1,22 @@
 #include <format>
 #include <memory>
+#include "mechanism/serialization.hpp"
+#include "mechanism/stringification.hpp"
+#include "coroutine_framework/net_module/rpc_struct.h"
 #include <boost/test/unit_test.hpp>
-#include "boost/test/tools/old/interface.hpp"
-#include "serialization/serialization.hpp"
-#include <boost/regex.hpp>
 
-using namespace new_rpc;
+using namespace G;
 using namespace std;
 
-struct Person { std::string name; int age; };
-template<>
-struct std::formatter<Person> {
-  constexpr auto parse(auto& ctx) { return ctx.end(); }
-  auto format(const Person& p, auto& ctx) const {
-    return std::format_to(ctx.out(), "{} (Age: {})", p.name, p.age);
-  }
+struct Person {
+  bool operator==(const Person &rhs) const { return name == rhs.name && age == rhs.age; }
+  std::string name;
+  int32_t age; 
 };
+STATIC_REFLECT(Person, name, age);
 
 struct Company {
-  friend struct boost::hana::accessors_impl<Company>;
+  Company() = default;
   Company(std::string name,
           std::vector<Person> employees,
           double profit)
@@ -30,18 +28,17 @@ private:
   std::vector<Person> employees_;
   double profit_;
 };
-BOOST_HANA_ADAPT_STRUCT(Company, name_, employees_, profit_);
 
 #define SERIALIZE(obj) \
 pos = 0;\
-serialize(obj, buffer, buffer_len, pos)
+Serializer<decltype(obj)>::serialize(obj, buffer, buffer_len, pos)
 
 #define DESERIALIZE(obj) \
 pos = 0;\
-deserialize(obj, buffer, buffer_len, pos)
+Serializer<decltype(obj)>::deserialize(obj, buffer, buffer_len, pos)
 
 #define GET_SERIALIZE_SIZE(obj) \
-get_serialize_size(obj)
+Serializer<decltype(obj)>::get_serialize_size(obj)
 
 struct Fixture {
   static constexpr int64_t buffer_len = 4096;
@@ -130,6 +127,28 @@ BOOST_AUTO_TEST_CASE(test_serialize_pointer) {
     BOOST_CHECK_EQUAL(pos, GET_SERIALIZE_SIZE(var1));
     delete var1;
     delete var2;
+  }
+}
+
+// template <typename T>
+// constexpr int static_print( ) {
+//   constexpr int64_t idx = 0;
+//   for (; idx < GlobalReflectMap<Person>::MemberCount; ) {
+//     std::byte *ptr = (std::byte *)&person + GlobalReflectMap<Person>::MemberOffset[idx];
+
+//   }
+// }
+
+BOOST_AUTO_TEST_CASE(test_serialize_struct) {
+  {
+    Person var1{"coolteng", 30};
+    SERIALIZE(var1);
+    BOOST_CHECK_EQUAL(pos, 20);
+    BOOST_CHECK_EQUAL(pos, GET_SERIALIZE_SIZE(var1));
+    Person var2;
+    DESERIALIZE(var2);
+    BOOST_CHECK(var1 == var2);
+    BOOST_CHECK_EQUAL(pos, GET_SERIALIZE_SIZE(var1));
   }
 }
 

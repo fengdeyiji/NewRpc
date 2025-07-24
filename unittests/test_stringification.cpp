@@ -1,10 +1,10 @@
 #include <format>
 #include <memory>
 #include <boost/test/unit_test.hpp>
-#include "stringification/stringification.hpp"
+#include "mechanism/stringification.hpp"
 #include <boost/regex.hpp>
 
-using namespace new_rpc;
+using namespace G;
 using namespace std;
 
 struct Person { std::string name; int age; };
@@ -16,8 +16,9 @@ struct std::formatter<Person> {
   }
 };
 
+namespace test {
 struct Company {
-  friend struct boost::hana::accessors_impl<Company>;
+  friend struct REFLECT<Company>;
   Company(std::string name,
           std::vector<Person> employees,
           double profit)
@@ -29,7 +30,8 @@ private:
   std::vector<Person> employees_;
   double profit_;
 };
-BOOST_HANA_ADAPT_STRUCT(Company, name_, employees_, profit_);
+}
+STATIC_REFLECT(test::Company, name_, employees_, profit_);
 
 struct Fixture {
   static constexpr int64_t buffer_len = 4096;
@@ -229,10 +231,10 @@ BOOST_AUTO_TEST_CASE(test_print_ranges) {
   }
 }
 
-BOOST_AUTO_TEST_CASE(test_hana_reflectable) {
-  static_assert(boost::hana::Struct<Company>::value, "Company not satisfied.");
+BOOST_AUTO_TEST_CASE(test_reflectable) {
   { // hana reflectable
-    Company var{"Tecent", {
+    static_assert(Reflectable<test::Company>);
+    test::Company var{"Tecent", {
     {"CoolTeng0", 30},
     {"CoolTeng1", 31},
     {"CoolTeng2", 32},
