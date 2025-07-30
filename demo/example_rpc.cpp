@@ -1,4 +1,5 @@
 #include "coroutine_framework/framework.hpp"
+#include "point.h"
 
 namespace G
 {
@@ -11,12 +12,18 @@ CoroTask<int64_t> example_add(int64_t a, int64_t b) {
   co_return ret;
 }
 
+CoroTask<Point> example_add_point(Point a, Point b) {
+  co_return a + b;
+}
+
 CoroTask<int64_t> example_echo() {
-  RandomGenerator random{0, 1000};
+  RandomGenerator random{0, 100};
   auto rand = random.gen();
   INFO_LOG("call echo, random sleep:{}ms", rand);
-  co_await co_sleep(rand * 1_ms);
+  co_await co_sleep(rand * 1_ms); // 模拟不稳定的消息延迟
   co_return 0;
 }
+
+
 
 }

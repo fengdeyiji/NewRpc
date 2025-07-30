@@ -1,12 +1,9 @@
 #pragma once
-#define SPDLOG_USE_STD_FORMAT
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_DEBUG
 #include <common.h>
 #include <sstream>
-#include <chrono>
 #include <iostream>
 #include <iomanip>
-#include <thread>
 #include <assert.h>
 #include <source_location>
 #include "spdlog/spdlog.h"
@@ -70,20 +67,28 @@ public:
 // #define __ARG_TO_FMT__(r, fmt, i, elem) \
 //   __arg_##i##__,
 
+#define __ARG_TO_STRING__(r, data, elem) \
+value_to_string(elem, buffer, buffer_len, pos, false); \
+std::string_view __to_string_arg__##r (buffer + before_pos, pos - before_pos); \
+before_pos = pos;
+#define __ARG_TO_LIST__(r, data, elem) \
+, __to_string_arg__##r
+
 
   
-#define DEBUG_LOG(...) SPDLOG_LOGGER_DEBUG(Logger::g_logger_, __VA_ARGS__)
-#define INFO_LOG(...) SPDLOG_LOGGER_INFO(Logger::g_logger_, __VA_ARGS__)
-// do {\
-//   constexpr int64_t buffer_len = 1_KiB; \
-//   char buffer[buffer_len]; \
-//   int64_t before_pos = 0; \
-//   int64_t pos = 0; \
-//   BOOST_PP_SEQ_FOR_EACH_I(__ARG_TO_STRING__, fmt, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)) \
-// } while(0)
+#define DEBUG_LOG(...)
+#define INFO_LOG(fmt, ...) \
+do {\
+  constexpr int64_t buffer_len = 1_KiB; \
+  char buffer[buffer_len]; \
+  int64_t before_pos = 0; \
+  int64_t pos = 0; \
+  __VA_OPT__(BOOST_PP_SEQ_FOR_EACH(__ARG_TO_STRING__, fmt, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)))\
+  SPDLOG_LOGGER_INFO(Logger::g_logger_, fmt __VA_OPT__(BOOST_PP_SEQ_FOR_EACH(__ARG_TO_LIST__, fmt, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)))); \
+} while(0)
 
 
-#define WARN_LOG(...) SPDLOG_LOGGER_WARN(Logger::g_logger_, __VA_ARGS__)
-#define ERROR_LOG(...) SPDLOG_LOGGER_ERROR(Logger::g_logger_, __VA_ARGS__)
+#define WARN_LOG(...)
+#define ERROR_LOG(...)
 
 }

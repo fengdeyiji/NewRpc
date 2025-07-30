@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <thread>
 #include <condition_variable>
-#include "coroutine_framework/common_execute_module.h"
 #include "coroutine_framework/queue.h"
 
 namespace G

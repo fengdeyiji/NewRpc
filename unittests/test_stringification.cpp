@@ -1,6 +1,7 @@
 #include <format>
 #include <memory>
 #include <boost/test/unit_test.hpp>
+#include "coroutine_framework/framework.hpp"
 #include "mechanism/stringification.hpp"
 #include <boost/regex.hpp>
 
@@ -25,7 +26,6 @@ struct Company {
   : name_(std::move(name)),
   employees_(std::move(employees)),
   profit_(profit) {}
-private:
   std::string name_;
   std::vector<Person> employees_;
   double profit_;
@@ -33,16 +33,20 @@ private:
 }
 STATIC_REFLECT(test::Company, name_, employees_, profit_);
 
+struct GlobalSetup {
+  GlobalSetup() { G::GlobalInit(LogLevel::info); }
+  ~GlobalSetup() { spdlog::drop_all(); }
+};
+BOOST_GLOBAL_FIXTURE(GlobalSetup);
 struct Fixture {
-  static constexpr int64_t buffer_len = 4096;
+  static constexpr int64_t buffer_len = 4_KiB;
   Fixture() :
   buffer(new char[buffer_len]),
   pos(0) {}
-  ~Fixture() { delete[] buffer; }
+  ~Fixture() {}
   char *buffer;
   int64_t pos;
 };
-
 BOOST_FIXTURE_TEST_SUITE(test_stringification, Fixture)
 
 #define TO_STRING(obj) \
@@ -234,6 +238,7 @@ BOOST_AUTO_TEST_CASE(test_print_ranges) {
 BOOST_AUTO_TEST_CASE(test_reflectable) {
   { // hana reflectable
     static_assert(Reflectable<test::Company>);
+    int a;
     test::Company var{"Tecent", {
     {"CoolTeng0", 30},
     {"CoolTeng1", 31},

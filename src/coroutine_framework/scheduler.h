@@ -34,9 +34,7 @@ struct CoroScheduler : public CommonExecuteModule {
   worker_thread_num_{worker_thread_num},
   stop_flag_{true},
   running_coro_cnt_{0},
-  random_gen_{0, 1000} {
-    start();
-  }
+  random_gen_{0, 1000} { start(); }
   ~CoroScheduler();
   void start();
   void stop() noexcept;

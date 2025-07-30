@@ -57,7 +57,7 @@ void value_to_string(const Value &value, char *buffer, const int64_t buffer_len,
                 std::same_as<Value, std::string> ||
                 std::same_as<Value, std::string_view>) { // 字符串类型直接格式化处理
     FORMAT_TO("{}", value);
-  } else if constexpr (is_pointer_like<Value>) { // 泛指针类型
+  } else if constexpr (is_pointer_like<Value> && !is_specialization_of_v<Value, std::expected>/*Expected类型单独特化*/) { // 泛指针类型
     if (nullptr == value) [[unlikely]] {
       FORMAT_TO("NULL");
     } else {
@@ -122,7 +122,7 @@ void value_to_string(const Value &value, char *buffer, const int64_t buffer_len,
     if (with_key) {
       FORMAT_TO("}}");
     }
-  } else if constexpr (Reflectable<Value>) { // 其他类型: 要求该类型可被boost::hana静态反射
+  } else if constexpr (Reflectable<Value>) { // 其他类型: 要求该类型可被静态反射
     if (with_key) {
       FORMAT_TO("{{");
     }

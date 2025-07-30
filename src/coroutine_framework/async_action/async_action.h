@@ -1,31 +1,80 @@
-#pragma once
+#ifndef SRC_COROUTINE_FRAMEWORK_ASYNC_ACTION_H
+#define SRC_COROUTINE_FRAMEWORK_ASYNC_ACTION_H
 #include "coroutine_framework/net_module/net_define.h"
-#include "coroutine_framework/net_module/net_service.h"
 #include "coroutine_framework/queue.h"
-#include "log/logger.h"
-#include "coroutine_framework/utils.h"
-#include "coroutine_framework/time_module/time_service.h"
-#include "coroutine_framework/scheduler.h"
 #include "coroutine_framework/net_module/rpc_mapper.h"
-#include "coroutine_framework/net_module/rpc_struct.h"
-#include "mechanism/serialization.hpp"
 #include <utility>
-#include "coroutine_framework/net_module/rpc_mapper.h"
 
 namespace G
 {
 
+// namespace combine
+// {
+
+// enum class Operator {
+//   OR = 1,
+//   AND = 2,
+// };
+
+// struct IAsyncCallBack {
+//   IAsyncCallBack() : is_finished_{false}, concurrent_controlloer_{nullptr} {}
+//   constexpr bool await_ready() const noexcept { return false; }
+//   virtual void acquire_lock() const {
+//     if (concurrent_controlloer_) { // if not null, means there is a combined async operations
+//       combined_async_operations_->async_start();
+//     }
+//   }
+//   virtual void async_finish() {
+//     is_finished_ = true;
+//   }
+//   virtual void cancel() const = 0;
+//   bool is_finished() const { return is_finished_; }
+//   bool is_finished_;
+//   ConCurrentController *concurrent_controlloer_;
+// };
+
+// template <Operator OPERATOR, typename T, typename U>
+// struct AsyncOperations;
+
+// template <typename T>
+// struct AsyncSingleOperation_CRTP : public IAsyncCallBack {
+//   AsyncSingleOperation_CRTP() : IAsyncCallBack{} {}
+//   template <typename U>
+//   AsyncOperations<Operator::OR, T, U> operator||(AsyncSingleOperation_CRTP<U> &&rhs) {
+//     return {std::move(*((T *)this)), std::move(rhs)};
+//   }
+//   template <typename U>
+//   AsyncOperations<Operator::AND, T, U> operator&&(AsyncSingleOperation_CRTP<U> &&rhs) {
+//     return {std::move(static_cast<T&&>(*this)), std::move(static_cast<U&&>(rhs))};
+//   }
+// };
+
+// template <Operator OPERATOR, typename T, typename U>
+// struct AsyncOperations {
+//   using tuple_types = std::tuple<T, U>;
+//   AsyncOperations(T &&arg1, U &&arg2)
+//   : async_pair_{std::move(arg1), std::move(arg2)} {}
+//   bool is_finished() const noexcept {
+//     bool ret = false;
+//     if constexpr (OPERATOR == Operator::OR) {
+//       ret = async_pair_.first.is_finished() || async_pair_.second.is_finished();
+//     } else if constexpr (OPERATOR == Operator::AND) {
+//       ret = async_pair_.first.is_finished() && async_pair_.second.is_finished();
+//     } else {
+//       static_assert(false, "not support");
+//     }
+//     return ret;
+//   }
+//   std::pair<T, U> async_pair_;
+// };
+
+// }
+
 struct co_sleep {
   co_sleep(const uint64_t sleep_ts) : sleep_ts_{sleep_ts} {}
-  bool await_ready() { return false; }
+  constexpr bool await_ready() const noexcept { return false; }
   template <typename Promise>
-  void await_suspend(std::coroutine_handle<Promise> handle) {
-    auto& promise = handle.promise();
-    promise.coro_local_var_->wake_up_ts_ = SteadyClockTime::now() + sleep_ts_;
-    promise.sync_release();
-    auto &time_module = TLS_FRAMEWORK->get_time_module();
-    time_module.register_frame(&promise);
-  }
+  void await_suspend(std::coroutine_handle<Promise> handle);
   void await_resume() {}
 private:
   const uint64_t sleep_ts_;
@@ -57,108 +106,20 @@ struct RpcBase : public CoRpcCallBack {
   received_results_{std::move(rhs.received_results_)},
   on_each_function_{std::move(rhs.on_each_function_)},
   coroutine_{rhs.coroutine_} {}
-  void timeout(const uint64_t timeout) {
-    timeout_ = timeout;
-  }
+  void timeout(const uint64_t timeout) { timeout_ = timeout; }
   template <std::ranges::range RANGE>
-  void on(const RANGE &endpoints) {
-    endpoints_.reserve(std::ranges::size(endpoints));
-    for (auto &endpoint : endpoints) {
-      endpoints_.emplace_back(endpoint, false);
-    }
-    received_results_.reserve(std::ranges::size(endpoints));
-  }
-  void on(const EndPoint &endpoint) {
-    endpoints_.reserve(1);
-    endpoints_.emplace_back(endpoint, false);
-    received_results_.reserve(1);
-  }
+  void on(const RANGE &endpoints);
+  void on(const EndPoint &endpoint);
   template <typename FUNC>
-  void on_each_result(FUNC &&func) {
-    on_each_function_ = func;
-  }
+  void on_each_result(FUNC &&func) { on_each_function_ = func; }
   template <typename ...Args>
-  void with_args(Args &&...args) {
-    using ArgsTuple = FunctionToID<FUNC_PTR>::FunctionTraits::args_tuple;
-    ArgsTuple args_tuple{std::forward<Args>(args)...};
-    PackageHeader header_placeholder{1, func_id_, 0, 0, 0}; // placeholder
-    uint64_t header_serialize_size = Serializer<PackageHeader>::get_serialize_size(header_placeholder);
-    total_serialize_size_ = header_serialize_size;
-    for_each_tuple([this](const auto &arg) {
-      total_serialize_size_ += Serializer<DECAY_T(arg)>::get_serialize_size(arg);
-    }, args_tuple);
-    assert(total_serialize_size_ <= LOCAL_BUFFER_SIZE); // FIXME: use dynamic buffer if too large
-    new (&send_buffer_) NetBuffer{total_serialize_size_};
-    int64_t pos = header_serialize_size;
-    for_each_tuple([this, &pos](const auto &arg) {
-      Serializer<DECAY_T(arg)>::serialize(arg, send_buffer_.buffer_, send_buffer_.buffer_len_, pos);
-    }, args_tuple);
-    assert(pos == total_serialize_size_);
-  }
+  void with_args(Args &&...args);
   template <typename Promise>
-  void await_suspend(std::coroutine_handle<Promise> handle) {
-    auto &net_module = TLS_FRAMEWORK->get_net_module();
-    Promise *promise = &handle.promise();
-    coroutine_ = promise;
-    uint64_t coro_id = promise->coro_local_var_->coro_id_;
-    PackageHeader header{1, func_id_, coro_id, net_module.get_listen_port(), 0};
-    header.set_message_type(PackageHeader::MessageType::REQUEST);
-    uint64_t header_serialize_size = Serializer<PackageHeader>::get_serialize_size(header);
-    header.payload_len_ = total_serialize_size_ - header_serialize_size;
-    int64_t pos = 0;
-    Serializer<PackageHeader>::serialize(header, send_buffer_.buffer_, send_buffer_.buffer_len_, pos);
-    assert(pos == header_serialize_size);
-    promise->sync_release();
-    net_module.commit_send_request_task(
-      coro_id,
-      endpoints_,
-      NetBufferView{send_buffer_},
-      timeout_,
-      promise,
-      this);
-  }
-  void process_buffer_cb(const EndPoint peer_endpoint, const NetBuffer &net_buffer, LinkedCoroutine *&coroutine) override {
-    auto total = endpoints_.size();
-    Expected<RET> rpc_ret;
-    RET &return_value = rpc_ret.value();
-    bool need_awaken = false;
-    Serializer<RET>::deserialize(return_value, net_buffer.buffer_, net_buffer.buffer_len_);
-    if (on_each_function_) {
-      on_each_function_(peer_endpoint, return_value, need_awaken);
-    }
-    received_results_.push_back({peer_endpoint, Expected<RET>{std::move(rpc_ret)}});
-    for (auto &endpoint_with_flag : endpoints_) {
-      if (endpoint_with_flag.first == peer_endpoint) {
-        endpoint_with_flag.second = true;
-        break;
-      }
-    }
-    auto size = received_results_.size();
-    switch (finish_condition_) {
-      case FinishCondition::WHEN_ANY:
-        need_awaken = true;
-        break;
-      case FinishCondition::WHEN_ALL:
-        need_awaken = (size == total);
-        break;
-      case FinishCondition::WHEN_MAJORITY:
-        need_awaken = (size == (total / 2 + 1));
-        break;
-      default:
-        std::abort();
-    }
-    if (need_awaken) {
-      coroutine = coroutine_;
-    }
-  }
-  void timeout_cb() override {
-    for (auto &endpoint_with_flag : endpoints_) {
-      if (!endpoint_with_flag.second) {
-        received_results_.push_back({endpoint_with_flag.first, UnExpected{Error::RPC_TIMEOUT}});
-      }
-    }
-    assert(received_results_.size() == endpoints_.size());
-  }
+  void await_suspend(std::coroutine_handle<Promise> handle);
+  virtual void process_buffer_cb(const EndPoint peer_endpoint,
+                                 const NetBuffer &net_buffer,
+                                 LinkedCoroutine *&coroutine) override;
+  virtual void timeout_cb() override;
   std::vector<std::pair<EndPoint, bool/*receive flag*/>> endpoints_;
   FinishCondition finish_condition_;
   uint64_t timeout_;
@@ -226,3 +187,9 @@ private:
 };
 
 }
+
+#ifndef SRC_COROUTINE_FRAMEWORK_ASYNC_ACTION_H_IPP
+#define SRC_COROUTINE_FRAMEWORK_ASYNC_ACTION_H_IPP
+#include "async_action.ipp"
+#endif
+#endif

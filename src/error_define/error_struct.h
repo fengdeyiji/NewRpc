@@ -32,6 +32,9 @@ struct Error {
     }
     return ret;
   }
+  bool operator==(const Error &rhs) const {
+    return error_no_ == rhs.error_no_;
+  }
   static std::unordered_map<int32_t, const char *> ERR_MAP_;
   int32_t error_no_;
 };
@@ -61,7 +64,10 @@ struct Serializer<Error> {
 };
 
 template <typename T>
-void Serializer<Expected<T>>::serialize(const Expected<T> &data, std::byte *buffer, const int64_t buffer_len, int64_t &pos) {
+void Serializer<Expected<T>>::serialize(const Expected<T> &data,
+                                        std::byte *buffer,
+                                        const int64_t buffer_len,
+                                        int64_t &pos) {
   if (data) [[likely]] {
     Serializer<bool>::serialize(true, buffer, buffer_len, pos);
     Serializer<T>::serialize(data.value(), buffer, buffer_len, pos);
@@ -72,7 +78,10 @@ void Serializer<Expected<T>>::serialize(const Expected<T> &data, std::byte *buff
 }
 
 template <typename T>
-void Serializer<Expected<T>>::deserialize(Expected<T> &data, const std::byte *buffer, const int64_t buffer_len, int64_t &pos) {
+void Serializer<Expected<T>>::deserialize(Expected<T> &data,
+                                          const std::byte *buffer,
+                                          const int64_t buffer_len,
+                                          int64_t &pos) {
   bool valid = false;
   Serializer<bool>::deserialize(valid, buffer, buffer_len, pos);
   if (valid) [[likely]] {

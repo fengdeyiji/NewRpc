@@ -1,16 +1,361 @@
 [
 {
   "directory": "/home/admin/project/NewRpc",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DBOOST_TEST_MAIN", "-DDEBUG", "-std=c++23", "-O0", "-g3", "--coverage", "-o", "build/.objs/test/linux/x86_64/debug/tests/test_serialization.cpp.o", "tests/test_serialization.cpp"],
-  "file": "tests/test_serialization.cpp"
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
 },
 {
   "directory": "/home/admin/project/NewRpc",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DBOOST_TEST_MAIN", "-DDEBUG", "-std=c++23", "-O0", "-g3", "--coverage", "-o", "build/.objs/test/linux/x86_64/debug/tests/test_stringification.cpp.o", "tests/test_stringification.cpp"],
-  "file": "tests/test_stringification.cpp"
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
 },
 {
   "directory": "/home/admin/project/NewRpc",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-Isrc", "-I/home/admin/.local/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_2_sleep2_concurrent/linux/arm64/debug/demo/demo_2_sleep2_concurrent.cpp.o", "demo/demo_2_sleep2_concurrent.cpp"],
+  "file": "demo/demo_2_sleep2_concurrent.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_3_sleep_millions/linux/arm64/debug/demo/demo_3_sleep_millions.cpp.o", "demo/demo_3_sleep_millions.cpp"],
+  "file": "demo/demo_3_sleep_millions.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/main/linux/arm64/debug/src/main.cpp.o", "src/main.cpp"],
   "file": "src/main.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_4_rpc_call/linux/arm64/debug/demo/demo_4_rpc_call.cpp.o", "demo/demo_4_rpc_call.cpp"],
+  "file": "demo/demo_4_rpc_call.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/unittests/test_serialization.cpp.o", "unittests/test_serialization.cpp"],
+  "file": "unittests/test_serialization.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/unittests/unittests_main.cpp.o", "unittests/unittests_main.cpp"],
+  "file": "unittests/unittests_main.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/unittests/linux/arm64/debug/unittests/test_stringification.cpp.o", "unittests/test_stringification.cpp"],
+  "file": "unittests/test_stringification.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_5_multi_rpc_call/linux/arm64/debug/demo/demo_5_multi_rpc_call.cpp.o", "demo/demo_5_multi_rpc_call.cpp"],
+  "file": "demo/demo_5_multi_rpc_call.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/demo/example_rpc.cpp.o", "demo/example_rpc.cpp"],
+  "file": "demo/example_rpc.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/log/logger.cpp.o", "src/log/logger.cpp"],
+  "file": "src/log/logger.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/error_define/error_struct.cpp.o", "src/error_define/error_struct.cpp"],
+  "file": "src/error_define/error_struct.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/scheduler.cpp.o", "src/coroutine_framework/scheduler.cpp"],
+  "file": "src/coroutine_framework/scheduler.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/task.cpp.o", "src/coroutine_framework/task.cpp"],
+  "file": "src/coroutine_framework/task.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/local_var.cpp.o", "src/coroutine_framework/local_var.cpp"],
+  "file": "src/coroutine_framework/local_var.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/net_module/rpc_mapper.cpp.o", "src/coroutine_framework/net_module/rpc_mapper.cpp"],
+  "file": "src/coroutine_framework/net_module/rpc_mapper.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/net_module/net_service.cpp.o", "src/coroutine_framework/net_module/net_service.cpp"],
+  "file": "src/coroutine_framework/net_module/net_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/src/coroutine_framework/time_module/time_service.cpp.o", "src/coroutine_framework/time_module/time_service.cpp"],
+  "file": "src/coroutine_framework/time_module/time_service.cpp"
+},
+{
+  "directory": "/home/admin/project/NewRpc",
+  "arguments": ["/home/admin/.local/gcc-14.3-dynamic-static/bin/gcc", "-c", "-Isrc", "-I.", "-I/home/admin/.local/boost/include", "-DDEBUG", "-std=c++23", "-O0", "-g3", "-o", "build/.objs/demo_1_sleep2/linux/arm64/debug/demo/demo_1_sleep2.cpp.o", "demo/demo_1_sleep2.cpp"],
+  "file": "demo/demo_1_sleep2.cpp"
 }]

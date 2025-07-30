@@ -12,13 +12,6 @@
 namespace G
 {
 
-struct CoRpcCallBack {
-  virtual void process_buffer_cb(const EndPoint endpoint,
-                                 const NetBuffer &net_buffer,
-                                 LinkedCoroutine *&coroutine) = 0;
-  virtual void timeout_cb() = 0;
-};
-
 struct MaintainInfo {
   MaintainInfo(LinkedCoroutine *coroutine, CoRpcCallBack *coro_rpc_callback)
   : coroutine_{coroutine},

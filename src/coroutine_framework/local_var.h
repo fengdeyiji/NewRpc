@@ -24,12 +24,7 @@ struct CoroLocalVar {
   : coro_id_{ID.fetch_add(1)},
   wake_up_ts_{0},
   response_info_{nullptr} {}
-  ~CoroLocalVar() {
-    if (response_info_) {
-      delete response_info_;
-      response_info_ = nullptr;
-    }
-  }
+  ~CoroLocalVar();
   uint64_t coro_id_; // in-process uniq monotonic id
   uint64_t wake_up_ts_; // for timer module
   ResponseInfo *response_info_;

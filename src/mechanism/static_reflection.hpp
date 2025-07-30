@@ -29,22 +29,22 @@ struct REFLECT<TYPE> { \
     BOOST_PP_SEQ_FOR_EACH_I(__MEMBER_OFFSET__, TYPE, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)) \
   }; \
   using MemberType = typename __DropFirst__<void BOOST_PP_SEQ_FOR_EACH_I(__MEMBER_TYPE__, TYPE, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))>::type; \
-}; \
-namespace std {\
-template <> \
-struct formatter<TYPE> { \
-  constexpr auto parse(auto& ctx) {\
-    return ctx.begin(); \
-  }\
-  auto format(const TYPE& val, auto& ctx) const {\
-    constexpr int64_t buffer_len = 512; \
-    char buffer[buffer_len];\
-    int64_t pos = 0;\
-    G::value_to_string(val, buffer, buffer_len, pos);\
-    return std::format_to(ctx.out(), "{}", std::string_view(buffer, pos));\
-  }\
-};\
-}
+};
+// namespace std {\
+// template <> \
+// struct formatter<TYPE> { \
+//   constexpr auto parse(auto& ctx) {\
+//     return ctx.begin(); \
+//   }\
+//   auto format(const TYPE& val, auto& ctx) const {\
+//     constexpr int64_t buffer_len = 512; \
+//     char buffer[buffer_len];\
+//     int64_t pos = 0;\
+//     G::value_to_string(val, buffer, buffer_len, pos);\
+//     return std::format_to(ctx.out(), "{}", std::string_view(buffer, pos));\
+//   }\
+// };\
+// }
 
 #define __MEMBER_NAME__(r, data, i, elem) BOOST_PP_STRINGIZE(elem),
 #define __MEMBER_OFFSET__(r, data, i, elem) offsetof(data, elem),

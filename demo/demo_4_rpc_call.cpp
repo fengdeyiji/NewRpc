@@ -2,9 +2,7 @@
 using namespace G;
 
 CoroTask<Expected<int64_t>> test_rpc(EndPoint peer) {
-  auto ret = co_await co_rpc<example_add>().with_args(1, 2)
-                                           .on(peer)
-                                           .timeout(2_s);
+  auto ret = co_await co_rpc<example_add>().with_args(1, 2).on(peer);
   co_return ret;
 } 
 
