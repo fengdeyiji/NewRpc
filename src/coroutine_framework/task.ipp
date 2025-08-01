@@ -10,7 +10,7 @@
 #include "log/logger.h"
 #endif
 
-namespace G
+namespace ToE
 {
 
 template <typename Ret>

@@ -1,5 +1,5 @@
 #include "coroutine_framework/framework.hpp"
-using namespace G;
+using namespace ToE;
 
 CoroTask<Point> test_add_point(EndPoint peer) {
   auto ret = co_await co_rpc<example_add_point>().with_args(Point{1,1}, Point{2,2})

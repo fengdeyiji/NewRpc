@@ -9,7 +9,7 @@
 #include <format>
 #include "static_reflection.hpp"
 
-namespace G {
+namespace ToE {
 
 template <typename T>
 concept ToStringAble = requires {

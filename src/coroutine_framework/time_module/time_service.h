@@ -5,7 +5,7 @@
 #include <condition_variable>
 #include "coroutine_framework/queue.h"
 
-namespace G
+namespace ToE
 {
 
 struct WallClockTime {

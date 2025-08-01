@@ -1,6 +1,6 @@
 #include "local_var.h"
 
-namespace G
+namespace ToE
 {
 
 std::atomic<uint64_t> CoroLocalVar::ID = 0;

@@ -9,7 +9,7 @@
 #include "spdlog/spdlog.h"
 #include <spdlog/sinks/stdout_color_sinks.h> // 控制台彩色输出
 
-namespace G {
+namespace ToE {
 enum class LogLevel { trace, debug, info, warn, error, critical };
 
 inline void print_memory_content(const std::byte *ptr, const uint64_t len, const std::source_location loc = std::source_location::current()) {
@@ -62,7 +62,7 @@ public:
 
 // #define __ARG_TO_STRING__(r, fmt, i, elem) \
 //   before_pos = pos; \
-//   G::value_to_string(elem, buffer, buffer_len, pos); \
+//   ToE::value_to_string(elem, buffer, buffer_len, pos); \
 //   std::string_view __arg_##i##__(buffer + before_pos, pos - before_pos);
 // #define __ARG_TO_FMT__(r, fmt, i, elem) \
 //   __arg_##i##__,

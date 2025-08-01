@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "local_var.h"
 
-namespace G
+namespace ToE
 {
 
 struct LinkedCoroutine {

@@ -4,8 +4,9 @@
 #include "coroutine_framework/queue.h"
 #include "coroutine_framework/net_module/rpc_mapper.h"
 #include <utility>
+#include "coroutine_framework/common_execute_module.h"
 
-namespace G
+namespace ToE
 {
 
 // namespace combine
@@ -70,9 +71,16 @@ namespace G
 
 // }
 
+struct co_suspend {
+  constexpr bool await_ready() noexcept { return false; }
+  template <typename Promise>
+  void await_suspend(std::coroutine_handle<Promise> handle) { TLS_SCHEDULER->commit(&handle.promise()); }
+  constexpr void await_resume() noexcept {}
+};
+
 struct co_sleep {
   co_sleep(const uint64_t sleep_ts) : sleep_ts_{sleep_ts} {}
-  constexpr bool await_ready() const noexcept { return false; }
+  constexpr bool await_ready() noexcept { return false; }
   template <typename Promise>
   void await_suspend(std::coroutine_handle<Promise> handle);
   void await_resume() {}

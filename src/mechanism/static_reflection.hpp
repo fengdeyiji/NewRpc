@@ -5,7 +5,7 @@
 #include <format>
 #include "boost/preprocessor.hpp"
 
-namespace G
+namespace ToE
 {
 template <typename Value>
 void value_to_string(const Value &value, char *buffer, const int64_t buffer_len, int64_t &pos, bool with_key = false);
@@ -40,7 +40,7 @@ struct REFLECT<TYPE> { \
 //     constexpr int64_t buffer_len = 512; \
 //     char buffer[buffer_len];\
 //     int64_t pos = 0;\
-//     G::value_to_string(val, buffer, buffer_len, pos);\
+//     ToE::value_to_string(val, buffer, buffer_len, pos);\
 //     return std::format_to(ctx.out(), "{}", std::string_view(buffer, pos));\
 //   }\
 // };\
@@ -50,7 +50,7 @@ struct REFLECT<TYPE> { \
 #define __MEMBER_OFFSET__(r, data, i, elem) offsetof(data, elem),
 #define __MEMBER_TYPE__(r, data, i, elem) , decltype(std::declval<data>().elem)
 
-namespace G
+namespace ToE
 {
 
 template <typename T>

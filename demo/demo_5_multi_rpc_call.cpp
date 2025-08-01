@@ -1,5 +1,5 @@
 #include "coroutine_framework/framework.hpp"
-using namespace G;
+using namespace ToE;
 
 CoroTask<void> multi_rpc_call(std::vector<EndPoint> endpoints) {
   while (true) {

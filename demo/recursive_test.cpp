@@ -1,5 +1,5 @@
 #include "coroutine_framework/framework.hpp"
-using namespace G;
+using namespace ToE;
 
 CoroTask<int64_t> coro_fibo(int idx) {
   int64_t ret = 0;

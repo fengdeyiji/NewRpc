@@ -5,7 +5,7 @@
 #include "mechanism/stringification.hpp"
 #include <boost/regex.hpp>
 
-using namespace G;
+using namespace ToE;
 using namespace std;
 
 struct Person { std::string name; int age; };
@@ -34,7 +34,7 @@ struct Company {
 STATIC_REFLECT(test::Company, name_, employees_, profit_);
 
 struct GlobalSetup {
-  GlobalSetup() { G::GlobalInit(LogLevel::info); }
+  GlobalSetup() { ToE::GlobalInit(LogLevel::info); }
   ~GlobalSetup() { spdlog::drop_all(); }
 };
 BOOST_GLOBAL_FIXTURE(GlobalSetup);

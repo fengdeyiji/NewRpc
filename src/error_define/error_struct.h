@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include "mechanism/serialization.hpp"
 
-namespace G {
+namespace ToE {
 
 struct Error {
   #define __DEF_ERROR__ \
@@ -106,19 +106,19 @@ int64_t Serializer<Expected<T>>::get_serialize_size(const Expected<T> &data) {
 };
 namespace std
 {
-template <> struct formatter<G ::Error> {
+template <> struct formatter<ToE::Error> {
   constexpr auto parse(auto &ctx) { return ctx.begin(); }
-  auto format(const G ::Error &val, auto &ctx) const {
-    return std ::format_to(ctx.out(), "error:{}, message:{}", val.error_no_, G::Error::msg(val.error_no_));
+  auto format(const ToE::Error &val, auto &ctx) const {
+    return std::format_to(ctx.out(), "error:{}, message:{}", val.error_no_, ToE::Error::msg(val.error_no_));
   }
 };
-template <typename T> struct formatter<G ::Expected<T>> {
+template <typename T> struct formatter<ToE::Expected<T>> {
   constexpr auto parse(auto &ctx) { return ctx.begin(); }
-  auto format(const G ::Expected<T> &val, auto &ctx) const {
+  auto format(const ToE::Expected<T> &val, auto &ctx) const {
     if (val) {
-      return std ::format_to(ctx.out(), "{}", *val);
+      return std::format_to(ctx.out(), "{}", *val);
     } else {
-      return std ::format_to(ctx.out(), "{}", val.error());
+      return std::format_to(ctx.out(), "{}", val.error());
     }
   }
 };

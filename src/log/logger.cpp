@@ -1,6 +1,6 @@
 #include "logger.h"
 
-namespace G
+namespace ToE
 {
 
 std::shared_ptr<spdlog::logger> Logger::g_logger_;

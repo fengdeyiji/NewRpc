@@ -11,7 +11,7 @@
 #include "async_action.h"
 #endif
 
-namespace G
+namespace ToE
 {
 
 template <typename Promise>

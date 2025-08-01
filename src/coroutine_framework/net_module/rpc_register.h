@@ -4,7 +4,7 @@
 #include "coroutine_framework/task.h"
 #include "demo/point.h"
 
-namespace G {
+namespace ToE {
 
 // declare Function
 CoroTask<int64_t> example_add(int64_t a, int64_t b);

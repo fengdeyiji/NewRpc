@@ -2,7 +2,7 @@
 #include <tuple>
 #include <atomic>
 
-namespace G
+namespace ToE
 {
 
 template <int IDX, typename FUNC, typename TUPLE>

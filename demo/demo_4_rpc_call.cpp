@@ -1,5 +1,5 @@
 #include "coroutine_framework/framework.hpp"
-using namespace G;
+using namespace ToE;
 
 CoroTask<Expected<int64_t>> test_rpc(EndPoint peer) {
   auto ret = co_await co_rpc<example_add>().with_args(1, 2).on(peer);

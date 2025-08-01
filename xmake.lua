@@ -62,6 +62,10 @@ target("recursive_test")
   set_kind("binary")
   add_files("demo/recursive_test.cpp")
 
+target("switch")
+  set_kind("binary")
+  add_files("demo/switch.cpp")
+
 target("demo_1_sleep2")
   set_kind("binary")
   add_files("demo/demo_1_sleep2.cpp")

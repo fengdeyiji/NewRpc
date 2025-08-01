@@ -9,7 +9,7 @@
 #include "coroutine_framework/net_module/net_define.h"
 #include "queue.h"
 
-namespace G {
+namespace ToE {
 
 void send_result_to_caller(const EndPoint &, NetBuffer &&);
 void prepare_buffer(const ResponseInfo &response_info,

@@ -13,7 +13,7 @@ using namespace boost;
 using namespace boost::asio;
 using namespace boost::asio::ip;
 
-namespace G
+namespace ToE
 {
 
 void NetService::start() {

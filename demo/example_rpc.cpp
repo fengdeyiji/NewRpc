@@ -1,7 +1,7 @@
 #include "coroutine_framework/framework.hpp"
 #include "point.h"
 
-namespace G
+namespace ToE
 {
 
 CoroTask<int64_t> example_add(int64_t a, int64_t b) {

@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "mechanism/static_reflection.hpp"
 
-namespace G
+namespace ToE
 {
 
 struct PackageHeader {
@@ -72,4 +72,4 @@ struct PackageHeader {
 };
 
 }
-STATIC_REFLECT(G::PackageHeader, version_, reserved_, server_port_, flags_, rpc_id_, process_restart_counter_, rpc_type_, payload_len_, checksum_);
+STATIC_REFLECT(ToE::PackageHeader, version_, reserved_, server_port_, flags_, rpc_id_, process_restart_counter_, rpc_type_, payload_len_, checksum_);

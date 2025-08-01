@@ -1,5 +1,5 @@
 #include "coroutine_framework/framework.hpp"
-using namespace G;
+using namespace ToE;
 using namespace std;
 
 void busy_loop(uint64_t ns) {

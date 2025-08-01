@@ -9,7 +9,7 @@
 #include "common.h"
 #include "mechanism/stringification.hpp"
 
-namespace G
+namespace ToE
 {
 
 using ASIO_EndPoint = boost::asio::ip::tcp::endpoint;
@@ -102,6 +102,6 @@ struct CoRpcCallBack {
 };
 
 }
-STATIC_REFLECT(G::EndPoint, ip_, port_);
-STATIC_REFLECT(G::NetBuffer, buffer_, buffer_len_);
-STATIC_REFLECT(G::NetBufferView, buffer_, buffer_len_);
+STATIC_REFLECT(ToE::EndPoint, ip_, port_);
+STATIC_REFLECT(ToE::NetBuffer, buffer_, buffer_len_);
+STATIC_REFLECT(ToE::NetBufferView, buffer_, buffer_len_);

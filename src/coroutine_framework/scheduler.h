@@ -7,7 +7,7 @@
 #include "time_module/time_service.h"
 #include "net_module/net_service.h"
 
-namespace G
+namespace ToE
 {
 
 struct RandomGenerator {

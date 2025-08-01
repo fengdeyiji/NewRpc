@@ -5,7 +5,7 @@
 #include "coroutine_framework/net_module/rpc_struct.h"
 #include <boost/test/unit_test.hpp>
 
-using namespace G;
+using namespace ToE;
 using namespace std;
 
 struct Person {

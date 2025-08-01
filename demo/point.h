@@ -1,7 +1,7 @@
 #pragma once
 #include "mechanism/static_reflection.hpp"
 
-namespace G
+namespace ToE
 {
 
 struct Point {
@@ -17,4 +17,4 @@ struct Point {
 };
 
 }
-STATIC_REFLECT(G::Point, x_, y_)
+STATIC_REFLECT(ToE::Point, x_, y_)

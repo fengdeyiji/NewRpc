@@ -1,6 +1,6 @@
 #include "net_define.h"
 
-namespace G
+namespace ToE
 {
 
 bool EndPoint::IPV4::operator==(const IPV4 &rhs) const {

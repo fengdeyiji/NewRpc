@@ -14,7 +14,7 @@
 #include "boost/preprocessor.hpp" // 用于宏迭代
 #include "static_reflection.hpp"
 
-namespace G {
+namespace ToE {
 
 template<typename Test, template<typename...> class Ref>
 struct is_specialization_of : std::false_type {};

@@ -5,7 +5,7 @@
 #include "mechanism/serialization.hpp"
 #include <cassert>
 
-namespace G
+namespace ToE
 {
 
 void send_result_to_caller(const EndPoint &endpoint, NetBuffer &&net_buffer) {

@@ -6,7 +6,7 @@
 #include "queue.h"
 #endif
 
-namespace G
+namespace ToE
 {
 
 inline LinkedCoroutine::~LinkedCoroutine() {

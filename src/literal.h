@@ -16,7 +16,7 @@ constexpr uint64_t operator""_min(unsigned long long val) { return val * 60_s; }
 constexpr uint64_t operator""_hour(unsigned long long val) { return val * 60_min; }
 constexpr uint64_t operator""_day(unsigned long long val) { return val * 24_hour; }
 
-namespace G
+namespace ToE
 {
 struct TS {
   constexpr TS(uint64_t ts)
@@ -24,9 +24,9 @@ struct TS {
   uint64_t ts_;
 };
 }
-template <> struct std::formatter<G::TS> {
+template <> struct std::formatter<ToE::TS> {
   constexpr auto parse(auto &ctx) { return ctx.begin(); }
-  auto format(const G::TS &val, auto &ctx) const {
+  auto format(const ToE::TS &val, auto &ctx) const {
     double num = 0.0;
     const char *literal = "";
     if (val.ts_ > 1_hour) {

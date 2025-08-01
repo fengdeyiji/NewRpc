@@ -2,7 +2,7 @@
 #include "rpc_register.h"
 #include "error_define/error_struct.h"
 
-namespace G {
+namespace ToE {
 
 class PackageHeader;
 
@@ -30,11 +30,11 @@ struct IDToFunction;
   template <> \
   struct FunctionToID<&FUNC> { \
     static constexpr size_t value = ID; \
-    using FunctionTraits = G::FunctionTraits<decltype(FUNC)>; \
+    using FunctionTraits = ToE::FunctionTraits<decltype(FUNC)>; \
   }; \
   template <> struct IDToFunction<ID> { \
     static constexpr auto func_ptr = &FUNC; \
-    using FunctionTraits = G::FunctionTraits<decltype(FUNC)>; \
+    using FunctionTraits = ToE::FunctionTraits<decltype(FUNC)>; \
   };
   __RPC_REGISTER__
 #undef RPC_REGISTER
